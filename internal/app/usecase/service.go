@@ -1,34 +1,30 @@
 package usecase
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
 	"net/http"
 )
 
 // Service ...
 type Service struct {
-	fetchURL string
-	storeURL string
-	client   *http.Client
+	p2pClient    *http.Client
+	hostedClient *http.Client
 }
 
 // NewService ...
-func NewService(client *http.Client, fetchURL, storeURL string) *Service {
+func NewService(p2pClient, hostedClient *http.Client) *Service {
 	return &Service{
-		client:   client,
-		fetchURL: fetchURL,
-		storeURL: storeURL,
+		p2pClient:    p2pClient,
+		hostedClient: hostedClient,
 	}
 }
 
-// Fetch is a fetch method for implementation
+// Fetch ...
 func (s *Service) Fetch(ctx context.Context) ([]map[string]interface{}, error) {
 	panic("waiting for implementation")
 }
 
-// Store is a store method for implementation
+// Store ...
 func (s *Service) Store(ctx context.Context, items []map[string]interface{}) error {
 	panic("waiting for implementation")
 	return nil

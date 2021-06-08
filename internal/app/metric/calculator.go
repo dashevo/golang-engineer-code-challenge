@@ -7,6 +7,9 @@ const (
 	DashFactor          float64 = 0.001
 )
 
+// ComputeCostFunc ...
+type ComputeCostFunc func(trafficSize, elapsedTime int64) float64
+
 // ComputeP2PTrafficSize returns computed cost for P2P traffic and request time
 func ComputeP2PTrafficSize(trafficSize, elapsedTime int64) float64 {
 	return DashFactor * ((float64(trafficSize) * P2PTrafficFactor) + ComputeElapsedTime(elapsedTime))

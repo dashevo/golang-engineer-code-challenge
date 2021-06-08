@@ -9,11 +9,11 @@ import (
 	"text/tabwriter"
 	"time"
 
-	"github.com/shotonoff/golang-engineer-code-challenge/internal/config"
-	"github.com/shotonoff/golang-engineer-code-challenge/internal/httpclient"
-	"github.com/shotonoff/golang-engineer-code-challenge/internal/metric"
-	"github.com/shotonoff/golang-engineer-code-challenge/internal/usecase"
-	"github.com/shotonoff/golang-engineer-code-challenge/internal/util"
+	"github.com/shotonoff/golang-engineer-code-challenge/internal/app/config"
+	"github.com/shotonoff/golang-engineer-code-challenge/internal/app/httpclient"
+	"github.com/shotonoff/golang-engineer-code-challenge/internal/app/metric"
+	"github.com/shotonoff/golang-engineer-code-challenge/internal/app/usecase"
+	"github.com/shotonoff/golang-engineer-code-challenge/internal/app/util"
 )
 
 func main() {
@@ -25,11 +25,25 @@ func main() {
 
 	metrics := metric.NewInMemory(nil)
 
-	client := httpclient.New()
-	httpclient.WithHeaders(client, config.DefaultHTTPHeaders)
-	httpclient.WithMetricsMiddleware(client, conf.Network, metrics)
+	p2pClient := httpclient.New(
+		httpclient.WithHeaders(config.DefaultHTTPHeaders),
+		httpclient.WithMetricsMiddleware(
+			metric.ComputeP2PTrafficSize,
+			metrics,
+			config.P2PNetwork,
+		),
+	)
 
-	srv := usecase.NewService(client, conf.FetchURL, conf.StoreURL)
+	hostedClient := httpclient.New(
+		httpclient.WithHeaders(config.DefaultHTTPHeaders),
+		httpclient.WithMetricsMiddleware(
+			metric.ComputeHostedTrafficSize,
+			metrics,
+			config.HostedNetwork,
+		),
+	)
+
+	srv := usecase.NewService(p2pClient, hostedClient)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()

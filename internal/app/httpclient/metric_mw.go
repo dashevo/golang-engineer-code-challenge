@@ -4,27 +4,25 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/shotonoff/golang-engineer-code-challenge/internal/config"
-	"github.com/shotonoff/golang-engineer-code-challenge/internal/metric"
+	"github.com/shotonoff/golang-engineer-code-challenge/internal/app/metric"
 )
 
 // WithMetricsMiddleware adds measure traffic middleware
-func WithMetricsMiddleware(client *http.Client, network string, metrics metric.Persister, tags ...string) {
-	tipper := &measureTrafficTipper{
-		metrics: metrics,
-		tags:    tags,
-		reqCost: metric.ComputeP2PTrafficSize,
-		next:    client.Transport,
+func WithMetricsMiddleware(computeFn metric.ComputeCostFunc, metrics metric.Persister, tags ...string) MiddlewareFunc {
+	return func(client *http.Client) {
+		tipper := &measureTrafficTipper{
+			metrics: metrics,
+			tags:    tags,
+			reqCost: computeFn,
+			next:    client.Transport,
+		}
+		client.Transport = tipper
 	}
-	if network == config.HostedNetwork {
-		tipper.reqCost = metric.ComputeHostedTrafficSize
-	}
-	client.Transport = tipper
 }
 
 type measureTrafficTipper struct {
 	metrics metric.Persister
-	reqCost func(size, elapsed int64) float64
+	reqCost metric.ComputeCostFunc
 	tags    []string
 	next    http.RoundTripper
 }

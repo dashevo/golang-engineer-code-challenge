@@ -1,4 +1,26 @@
-# Golang Engineer's Code Challenge
+<p align="center">
+	<a href="https://git.io/col">
+		<img src="https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg" alt="Collaborative Etiquette">
+	</a>
+	<a href="https://twitter.com/intent/follow?screen_name=dashpay">
+		<img src="https://img.shields.io/twitter/follow/dashpay.svg?style=social&logo=twitter" alt="follow on Twitter">
+	</a>
+	<a href="#">
+		<img src="https://img.shields.io/dub/l/vibe-d.svg" alt="MIT">
+	</a>
+</p>
+
+<p>&nbsp;</p>
+
+<p align="center">
+	<a href="https://dash.org">
+		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Dash_digital-cash_logo_2018_rgb_for_screens.svg/1600px-Dash_digital-cash_logo_2018_rgb_for_screens.svg.png" width="600">
+	</a>
+</p>
+
+<p>&nbsp;</p>
+
+# Go Engineer's Code Challenge
 
 > Code challenge for Dash Core Team candidates
 
@@ -6,9 +28,8 @@ The goal of this challenge is to create an application which receives,
 validates and displays data from a user.
 
 Since it takes a while, we've prepared the application skeleton for you.
-It's not really application, but we'll pretend that it is. ;)
 
-In the provided skeleton, you should implement a [service](internal/usecase/service.go), which should validate, persist [sample data](assets/data.json) in external service(s), retrieve and ensure data its integrity 
+In the provided skeleton, you should implement a [service](internal/app/usecase/service.go), which should validate, persist [sample data](assets/data.json) in external service(s), retrieve and ensure data its integrity 
 
 Also, your solution must implement at least one of the following types of external services:
   1. **Peer-to-peer service** which hypothetically runs on user's hosts. Let’s call it "P2P" service.
@@ -26,20 +47,20 @@ The middleware helps us to calculate incoming and outgoing traffics
 
  - Use this repository as a template for the solution 
  - Implement as many external services as you need to store sample data from the application
- - Implement [the store method](internal/usecase/service.go#L27). Validate and persist sample data
+ - Implement [the store method](internal/app/usecase/service.go#L27). Validate and persist sample data
    in the external service(s)
- - Implement [the fetch method](internal/usecase/service.go#L32). Fetch sample data back and ensure its 
+ - Implement [the fetch method](internal/app/usecase/service.go#L32). Fetch sample data back and ensure its 
    integrity. **When you fetch data back from the untrusted service, you should verify it for spoofing protection**
  - Write beautiful code. Code design (SOLID, Clean Architecture, 12factor) is important to us.
  - Run application and see results. **Try to spend as little money as possible**. Cost depends on the size
    of request / response and elapsed time. You may find the exact formula in
-   [the application skeleton code](internal/metric/calculator.go)
+   [the application skeleton code](internal/app/metric/calculator.go)
  - Share with us the link on a private repository or send us an archive with your solution
  
 ## Requirements
 
 ### External services
- - Services should be written in Golang
+ - Services should be written in Go
  - Data should be permanently persisted (i.e. available after a service restart)
 
 ### Application
