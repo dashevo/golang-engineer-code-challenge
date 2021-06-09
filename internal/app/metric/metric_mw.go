@@ -43,7 +43,7 @@ func (r *measureTrafficTipper) RoundTrip(req *http.Request) (*http.Response, err
 	}
 	now := time.Now()
 	resp, err := r.next.RoundTrip(req)
-	elapsed := time.Now().Sub(now).Milliseconds()
+	elapsed := time.Since(now).Milliseconds()
 	if err != nil {
 		return nil, err
 	}

@@ -104,10 +104,7 @@ func (s *OrderedStats) Slice() []Stats {
 	s.guard.RLock()
 	defer s.guard.RUnlock()
 	var res []Stats
-	for _, s := range s.items {
-		res = append(res, s)
-	}
-	return res
+	return append(res, s.items...)
 }
 
 // Get returns stats data and an existence flag

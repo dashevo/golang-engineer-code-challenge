@@ -27,5 +27,4 @@ func (s *Service) Fetch(ctx context.Context) ([]map[string]interface{}, error) {
 // Store stored a passed items in external service(s)
 func (s *Service) Store(ctx context.Context, items []map[string]interface{}) error {
 	panic("waiting for implementation")
-	return nil
 }

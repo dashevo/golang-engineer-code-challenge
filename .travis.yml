@@ -4,19 +4,16 @@ language: go
 go:
   - 1.16.x
 
-#services:
-#  - docker
-
 addons:
   apt:
     packages:
-#      - docker-ce
       - make
 
-#install:
-#  - docker compose build
+install:
+  - go get github.com/golangci/golangci-lint/cmd/golangci-lint@v1.40.1
 
 script:
+  - make lint
   - make tests
 # TODO: Please uncomment this line to run code challenge
-#  - docker-compose run application npm run start
+#  - make run

@@ -38,3 +38,6 @@ tests:
 tests/coverage: tests
 	$(GOCOVER) -func=coverage.out
 	$(GOCOVER) -html=coverage.out
+
+lint:
+	golangci-lint run ./...
