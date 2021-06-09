@@ -5,8 +5,16 @@ import (
 	"time"
 )
 
-// MiddlewareFunc ...
+// MiddlewareFunc is a http client middleware function
 type MiddlewareFunc func(client *http.Client)
+
+// RoundTripFunc implements http.RoundTripper to easily mock http.Client
+type RoundTripFunc func(req *http.Request) *http.Response
+
+// RoundTrip is implementation of http.RoundTripper
+func (r RoundTripFunc) RoundTrip(req *http.Request) (*http.Response, error) {
+	return r(req), nil
+}
 
 // New returns http client
 func New(mws ...MiddlewareFunc) *http.Client {
@@ -33,7 +41,7 @@ type headerRoundTipper struct {
 	next   http.RoundTripper
 }
 
-// RoundTrip adds or overwrites request's user-agent header
+// RoundTrip adds or overwrites request's headers
 func (r *headerRoundTipper) RoundTrip(req *http.Request) (*http.Response, error) {
 	for k, v := range r.values {
 		req.Header.Set(k, v)

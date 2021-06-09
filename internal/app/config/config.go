@@ -5,24 +5,8 @@ import (
 	"os"
 )
 
-const (
-	// P2PNetwork is used for p2p network
-	P2PNetwork = "p2p"
-	// HostedNetwork is used for hosted network
-	HostedNetwork = "hosted"
-)
-
-// DefaultHTTPHeaders is a default http headers for a client
-var DefaultHTTPHeaders = map[string]string{
-	"User-Agent":   "dash/client",
-	"Content-Type": "application/json",
-}
-
 // Config is application config
 type Config struct {
-	Network        string
-	FetchURL       string
-	StoreURL       string
 	TestSampleFile string
 }
 

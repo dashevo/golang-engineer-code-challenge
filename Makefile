@@ -4,6 +4,7 @@ HOSTED_CMD = "cmd/hosted/main.go"
 ROOT_DIR = $(CURDIR)
 
 GO ?= go
+GOCOVER  = $(GO) tool cover
 
 BUILD_ENVS:=GOGC=off CGO_ENABLED=0
 
@@ -30,3 +31,10 @@ run: docker/build
 
 stop:
 	docker compose down
+
+tests:
+	$(GO) test -race -short -coverprofile=coverage.out -v  ./...
+
+tests/coverage: tests
+	$(GOCOVER) -func=coverage.out
+	$(GOCOVER) -html=coverage.out

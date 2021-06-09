@@ -7,20 +7,20 @@ const (
 	DashFactor          float64 = 0.001
 )
 
-// ComputeCostFunc ...
-type ComputeCostFunc func(trafficSize, elapsedTime int64) float64
+// ComputeCostFunc is a function type of a calculation function
+type ComputeCostFunc func(size, elapsedMs int64) float64
 
-// ComputeP2PTrafficSize returns computed cost for P2P traffic and request time
-func ComputeP2PTrafficSize(trafficSize, elapsedTime int64) float64 {
-	return DashFactor * ((float64(trafficSize) * P2PTrafficFactor) + ComputeElapsedTime(elapsedTime))
+// ComputeP2PRequestCost returns computed cost of a request to p2p service
+func ComputeP2PRequestCost(size, elapsedMs int64) float64 {
+	return DashFactor * ((float64(size) * P2PTrafficFactor) + ComputeElapsedTime(elapsedMs))
 }
 
-// ComputeHostedTrafficSize returns computed cost for Hosted traffic and request time
-func ComputeHostedTrafficSize(trafficSize, elapsedTime int64) float64 {
-	return DashFactor * ((float64(trafficSize) * HostedTrafficFactor) + ComputeElapsedTime(elapsedTime))
+// ComputeHostedRequestCost returns computed cost of a request to hosted service
+func ComputeHostedRequestCost(size, elapsedMs int64) float64 {
+	return DashFactor * ((float64(size) * HostedTrafficFactor) + ComputeElapsedTime(elapsedMs))
 }
 
-// ComputeElapsedTime returns computed cost for a request time
-func ComputeElapsedTime(elapsedTime int64) float64 {
-	return float64(elapsedTime) * ElapsedTimeFactor
+// ComputeElapsedTime returns computed cost for a request time in milliseconds
+func ComputeElapsedTime(elapsedMs int64) float64 {
+	return float64(elapsedMs) * ElapsedTimeFactor
 }
