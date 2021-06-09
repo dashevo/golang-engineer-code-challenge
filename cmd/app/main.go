@@ -20,6 +20,7 @@ func main() {
 	inputData, err := util.LoadSampleData(conf.TestSampleFile)
 	check(err)
 
+	// metrics storage
 	metrics := metric.NewInMemory(nil)
 
 	p2pClient, err := network.NewHTTPClient(metrics, network.P2PNetwork)
