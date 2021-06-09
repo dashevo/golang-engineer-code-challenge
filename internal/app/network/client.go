@@ -33,7 +33,7 @@ func NewHTTPClient(metrics metric.Persister, network string) (*http.Client, erro
 	}
 	client := httpclient.New(
 		httpclient.WithHeaders(httpHeaders),
-		metric.WithMetricsMiddleware(costFn, metrics, network),
+		metric.WithMetricsMiddleware(costFn, metrics, "network", network),
 	)
 	return client, nil
 }
