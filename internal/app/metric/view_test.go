@@ -46,14 +46,14 @@ func TestRenderSummaryStats(t *testing.T) {
 	buf := bytes.Buffer{}
 	err := RenderSummaryStats(&buf, stats)
 	assert.NoError(t, err)
-	expected := `Your total expenses: 150.2100 DASH
+	expected := `Your total expenses: 150.2100000 DASH
 
-Grouped statistics for all performed requests
+Summary statistics for all performed requests
 Request URL		|Size/bytes	|Elapsed/ms	|Cost/dash
 GET /api/v1/get		|5045		|521		|75.100000
 POST /api/v1/post	|5300		|2000		|75.110000
 
-Grouped statistics for all used networks
+Summary statistics for all used networks
 Network		|Size/bytes	|Elapsed/ms	|Cost/dash
 p2p		|5045		|521		|75.100000
 self-hosted	|5300		|2000		|75.110000

@@ -10,7 +10,7 @@ import (
 // RenderSummaryStats renders the summary statistics and writes to passed io.Writer
 func RenderSummaryStats(w io.Writer, stats SummaryStats) error {
 	var err error
-	_, err = fmt.Fprintf(w, "Your total expenses: %.4f DASH\n\n", stats.TotalCost)
+	_, err = fmt.Fprintf(w, "Your total expenses: %.7f DASH\n\n", stats.TotalCost)
 	if err != nil {
 		return err
 	}
@@ -28,7 +28,7 @@ func RenderSummaryStats(w io.Writer, stats SummaryStats) error {
 		}
 	}
 	if len(requestStats) > 0 {
-		_, err := io.WriteString(w, "Grouped statistics for all performed requests\n")
+		_, err := io.WriteString(w, "Summary statistics for all performed requests\n")
 		if err != nil {
 			return err
 		}
@@ -42,7 +42,7 @@ func RenderSummaryStats(w io.Writer, stats SummaryStats) error {
 		return err
 	}
 	if len(networkStats) > 0 {
-		_, err := io.WriteString(w, "Grouped statistics for all used networks\n")
+		_, err := io.WriteString(w, "Summary statistics for all used networks\n")
 		if err != nil {
 			return err
 		}
