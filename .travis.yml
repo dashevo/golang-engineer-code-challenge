@@ -1,0 +1,22 @@
+sudo: required
+language: go
+
+go:
+  - 1.16.x
+
+#services:
+#  - docker
+
+addons:
+  apt:
+    packages:
+#      - docker-ce
+      - make
+
+#install:
+#  - docker compose build
+
+script:
+  - make tests
+# TODO: Please uncomment this line to run code challenge
+#  - docker-compose run application npm run start
