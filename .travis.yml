@@ -1,12 +1,17 @@
 sudo: required
+
 language: go
 
 go:
   - 1.16.x
 
+services:
+  - docker
+
 addons:
   apt:
     packages:
+      - docker-ce
       - make
 
 install:
