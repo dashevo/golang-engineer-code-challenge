@@ -1,6 +1,6 @@
 APP_CMD = "cmd/app/main.go"
 P2P_CMD = "cmd/p2p/main.go"
-HOSTED_CMD = "cmd/hosted/main.go"
+SELF_HOSTED_CMD = "cmd/selfhosted/main.go"
 ROOT_DIR = $(CURDIR)
 
 GO ?= go
@@ -14,8 +14,8 @@ compile/app:
 compile/p2p:
 	$(BUILD_ENVS) $(GO) build -o ./build/p2p $(P2P_CMD)
 
-compile/hosted:
-	$(BUILD_ENVS) $(GO) build -o ./build/hosted $(HOSTED_CMD)
+compile/self-hosted:
+	$(BUILD_ENVS) $(GO) build -o ./build/self-hosted $(SELF_HOSTED_CMD)
 
 docker/build:
 	docker compose build
@@ -23,8 +23,8 @@ docker/build:
 docker/run/p2p:
 	docker compose run -d --rm p2p-srv
 
-docker/run/hosted:
-	docker compose run -d --rm hosted-srv
+docker/run/self-hosted:
+	docker compose run -d --rm self-hosted-srv
 
 run: docker/build
 	docker compose run dash-challenge-app

@@ -12,7 +12,7 @@ services:
       context: .
     depends_on:
       - p2p-srv
-      - hosted-srv
+      - self-hosted-srv
     networks:
       - go_dash_challenge
 
@@ -24,10 +24,10 @@ services:
     networks:
       - go_dash_challenge
 
-  hosted-srv:
-    image: dash-code/golang-challenge-hosted-srv
+  self-hosted-srv:
+    image: dash-code/golang-challenge-self-hosted-srv
     build:
-      dockerfile: ./deployments/hosted/Dockerfile
+      dockerfile: ./deployments/self-hosted/Dockerfile
       context: .
     networks:
       - go_dash_challenge

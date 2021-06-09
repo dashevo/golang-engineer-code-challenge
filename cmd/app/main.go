@@ -25,10 +25,10 @@ func main() {
 	p2pClient, err := network.NewHTTPClient(metrics, network.P2PNetwork)
 	check(err)
 
-	hostedClient, err := network.NewHTTPClient(metrics, network.HostedNetwork)
+	selfHostedClient, err := network.NewHTTPClient(metrics, network.SelfHostedNetwork)
 	check(err)
 
-	srv := usecase.NewService(p2pClient, hostedClient)
+	srv := usecase.NewService(p2pClient, selfHostedClient)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()

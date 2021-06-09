@@ -18,7 +18,7 @@ var fakeMetrics = []Metric{
 		Cost:    15,
 		Elapsed: 5,
 		Tags: map[string]string{
-			"network": "hosted",
+			"network": "self-hosted",
 		},
 	},
 	{
@@ -38,7 +38,7 @@ var fakeMetrics = []Metric{
 		Cost:    55,
 		Elapsed: 32,
 		Tags: map[string]string{
-			"network": "hosted",
+			"network": "self-hosted",
 		},
 	},
 }

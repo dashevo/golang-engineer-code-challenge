@@ -30,7 +30,7 @@ func TestSummaryStats(t *testing.T) {
 			Elapsed: 33,
 		},
 		{
-			Name:    "hosted",
+			Name:    "self-hosted",
 			Type:    "network",
 			Size:    420,
 			Cost:    70,

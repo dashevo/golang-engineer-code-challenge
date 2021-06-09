@@ -27,7 +27,8 @@
 The goal of this challenge is to create an application which receives,
 validates and displays data from a user.
 
-Since it takes a while, we've prepared the application skeleton for you.
+Since it takes a while, we've prepared the application skeleton for you. We assume that this is a light client 
+The repository is designed as a mono-repository for upcoming microservices
 
 In the provided skeleton, you should implement a [service](internal/app/usecase/service.go), which should validate, persist [sample data](assets/data.json) in external service(s), retrieve and ensure data its integrity 
 
@@ -35,13 +36,15 @@ Also, your solution must implement at least one of the following types of extern
   1. **Peer-to-peer service** which hypothetically runs on user's hosts. Let’s call it "P2P" service.
      Networking and storage will be cheap for you - **0.0001 DASH per byte**, but you can’t trust
      this service because a malicious user may spoof (modify) your data.
+     The code should be placed [here](internal/p2p) and entrypoint of the service is [here](cmd/p2p/main.go)
   2. **Self-hosted service** which runs on your server. Let’s call it "hosted" service.
      Networking and storage will be much more expensive for you - **0.001 DASH per byte**, but the data is
      located on your server, so you can trust it.
+     The code should be placed [here](internal/selfhosted) and entrypoint of the service is [here](cmd/selfhosted/main.go)
 
-For communication with your external service(s) we provide two functions
+For communication with your external service(s) we provide a [service](internal/app/usecase/service.go)
 which are used http client for communication between services
-The middleware helps us to calculate incoming and outgoing traffics
+The middleware helps us to calculate inbound and outbound traffics
 
 ## Your mission
 

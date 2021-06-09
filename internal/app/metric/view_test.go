@@ -8,9 +8,7 @@ import (
 )
 
 func TestRenderSummaryStats(t *testing.T) {
-	groupedStats := OrderedStats{
-		keys: make(map[string]int),
-	}
+	groupedStats := NewOrderedStats()
 	groupedStats.Set("GET /api/v1/get", Stats{
 		Name:    "GET /api/v1/get",
 		Type:    "request",
@@ -32,8 +30,8 @@ func TestRenderSummaryStats(t *testing.T) {
 		Cost:    75.10,
 		Elapsed: 521,
 	})
-	groupedStats.Set("hosted", Stats{
-		Name:    "hosted",
+	groupedStats.Set("self-hosted", Stats{
+		Name:    "self-hosted",
 		Type:    "network",
 		Size:    5300,
 		Cost:    75.11,
@@ -56,9 +54,9 @@ GET /api/v1/get		|5045		|521		|75.100000
 POST /api/v1/post	|5300		|2000		|75.110000
 
 Grouped statistics for all used networks
-Network	|Size/bytes	|Elapsed/ms	|Cost/dash
-p2p	|5045		|521		|75.100000
-hosted	|5300		|2000		|75.110000
+Network		|Size/bytes	|Elapsed/ms	|Cost/dash
+p2p		|5045		|521		|75.100000
+self-hosted	|5300		|2000		|75.110000
 `
 	assert.Equal(t, expected, buf.String())
 }

@@ -38,7 +38,7 @@ func TestComputeP2PTrafficSize(t *testing.T) {
 	}
 }
 
-func TestComputeHostedTrafficSize(t *testing.T) {
+func TestComputeSelfHostedTrafficSize(t *testing.T) {
 	testCases := []struct {
 		size     int64
 		elapsed  int64
@@ -66,6 +66,6 @@ func TestComputeHostedTrafficSize(t *testing.T) {
 		},
 	}
 	for _, tc := range testCases {
-		assert.InDelta(t, tc.expected, ComputeHostedRequestCost(tc.size, tc.elapsed), 0.0000001)
+		assert.InDelta(t, tc.expected, ComputeSelfHostedRequestCost(tc.size, tc.elapsed), 0.0000001)
 	}
 }

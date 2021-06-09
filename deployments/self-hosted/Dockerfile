@@ -6,12 +6,12 @@ RUN apk update \
 
 WORKDIR /src/challenge
 COPY ../.. .
-RUN make compile/hosted
+RUN make compile/self-hosted
 
 FROM alpine:3.11
 
-WORKDIR /hosted
+WORKDIR /self_hosted
 
-COPY --from=builder /src/challenge/build/hosted /usr/bin/hosted
+COPY --from=builder /src/challenge/build/self_hosted /usr/bin/self_hosted
 
-CMD ["hosted"]
+CMD ["self_hosted"]
