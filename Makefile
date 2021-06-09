@@ -15,7 +15,7 @@ compile/p2p:
 	$(BUILD_ENVS) $(GO) build -o ./build/p2p $(P2P_CMD)
 
 compile/self-hosted:
-	$(BUILD_ENVS) $(GO) build -o ./build/self-hosted $(SELF_HOSTED_CMD)
+	$(BUILD_ENVS) $(GO) build -o ./build/self_hosted $(SELF_HOSTED_CMD)
 
 docker/build:
 	docker compose build
