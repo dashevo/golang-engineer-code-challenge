@@ -1,3 +1,4 @@
 .env
 *.out
 build
+.idea
