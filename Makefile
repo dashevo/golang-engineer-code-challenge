@@ -20,17 +20,13 @@ compile/self-hosted:
 docker/build:
 	docker compose build
 
-docker/run/p2p:
-	docker compose run -d --rm p2p-srv
-
-docker/run/self-hosted:
-	docker compose run -d --rm self-hosted-srv
-
-run: docker/build
+docker/run:
 	docker compose run app
 
-stop:
+docker/down:
 	docker compose down
+
+run: docker/build docker/run docker/down
 
 tests:
 	$(GO) test -race -short -coverprofile=coverage.out -v  ./...
