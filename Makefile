@@ -27,7 +27,7 @@ docker/run/self-hosted:
 	docker compose run -d --rm self-hosted-srv
 
 run: docker/build
-	docker compose run dash-challenge-app
+	docker compose run app
 
 stop:
 	docker compose down

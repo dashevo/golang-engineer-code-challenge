@@ -31,7 +31,7 @@ The goal of this challenge is to create an application which receives,
 validates and displays data from a user.
 
 Since it takes a while, we've prepared the application skeleton for you. We assume that this is a light client 
-The repository is designed as a mono-repository for upcoming microservices
+The repository is designed as a mono-repository for your application and external services 
 
 In the provided skeleton, you should implement a [service](internal/app/usecase/service.go), which should validate, persist [sample data](assets/data.json) in external service(s), retrieve and ensure data its integrity 
 

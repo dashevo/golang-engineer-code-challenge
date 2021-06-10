@@ -1,33 +1,8 @@
-version: "3.5"
-
-networks:
-  go_dash_challenge:
-    name: go_dash_challenge
+version: "3.7"
 
 services:
-  dash-challenge-app:
+  app:
     image: dash-code/golang-challenge-app
     build:
-      dockerfile: ./deployments/app/Dockerfile
+      dockerfile: docker/app/Dockerfile
       context: .
-    depends_on:
-      - p2p-srv
-      - self-hosted-srv
-    networks:
-      - go_dash_challenge
-
-  p2p-srv:
-    image: dash-code/golang-challenge-p2p-srv
-    build:
-      dockerfile: ./deployments/p2p/Dockerfile
-      context: .
-    networks:
-      - go_dash_challenge
-
-  self-hosted-srv:
-    image: dash-code/golang-challenge-self-hosted-srv
-    build:
-      dockerfile: ./deployments/self-hosted/Dockerfile
-      context: .
-    networks:
-      - go_dash_challenge
