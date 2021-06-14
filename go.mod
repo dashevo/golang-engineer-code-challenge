@@ -1,4 +1,4 @@
-module github.com/shotonoff/golang-engineer-code-challenge
+module github.com/dashevo/golang-engineer-code-challenge
 
 go 1.16
 

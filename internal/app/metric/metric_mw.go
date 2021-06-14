@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/shotonoff/golang-engineer-code-challenge/internal/app/httpclient"
+	"github.com/dashevo/golang-engineer-code-challenge/internal/app/httpclient"
 )
 
 // WithMetricsMiddleware adds measure traffic middleware

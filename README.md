@@ -6,7 +6,7 @@
 		<img src="https://img.shields.io/twitter/follow/dashpay.svg?style=social&logo=twitter" alt="follow on Twitter">
 	</a>
 	<a href="#">
-		<img src="https://travis-ci.com/shotonoff/golang-engineer-code-challenge.svg?branch=main" alt="travis-ci">
+		<img src="https://travis-ci.com/dashevo/golang-engineer-code-challenge.svg?branch=main" alt="travis-ci">
 	</a>
 	<a href="#">
 		<img src="https://img.shields.io/dub/l/vibe-d.svg" alt="MIT">

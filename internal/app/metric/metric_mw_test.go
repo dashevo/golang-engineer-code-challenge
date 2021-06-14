@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/shotonoff/golang-engineer-code-challenge/internal/app/httpclient"
+	"github.com/dashevo/golang-engineer-code-challenge/internal/app/httpclient"
 	"github.com/stretchr/testify/assert"
 )
 
