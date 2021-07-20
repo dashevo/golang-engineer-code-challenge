@@ -55,7 +55,7 @@ The middleware helps us calculate inbound and outbound traffic.
 - Implement as many external services as you need to store sample data from the application.
 - Implement [the store method](internal/app/usecase/service.go#L27). Validate and persist sample data
    in the external service(s).
-- Implement [the fetch method](internal/app/usecase/service.go#L32). Fetch sample data back and ensure its
+- Implement [the fetch method](internal/app/usecase/service.go#L23). Fetch sample data back and ensure its
    integrity. **When you fetch data back from the untrusted service, you should verify it for spoofing protection**
 - Write beautiful code. Code design (SOLID, Clean Architecture, 12factor) is important to us.
 - Run the application and review the results. **Try to spend as little money as possible**. Cost depends on the size
