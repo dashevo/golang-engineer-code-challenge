@@ -34,11 +34,11 @@ This repository is designed as a mono-repository for your application and extern
 
 Your solution must implement at least one of the following types of external services:
 
-  1. **Peer-to-peer service**: This service runs on the user's host. Let’s call it "P2P" service.
+  1. **Peer-to-peer service**: This service runs on the user's host.
      Networking and storage will be cheap for you - **0.0001 DASH per byte**, but you can’t trust
      this service because a malicious user may spoof (modify) your data.
      Code for this service should be placed [here](internal/p2p) and the entrypoint of the service is [here](cmd/p2p/main.go)
-  2. **Self-hosted service**: This service runs on your server. Let’s call it "hosted" service.
+  2. **Self-hosted service**: This service runs on your server.
      Networking and storage will be much more expensive for you - **0.001 DASH per byte**, but the data is
      located on your server, so you can trust it.
      Code for this service should be placed [here](internal/selfhosted) and the entrypoint of the service is [here](cmd/selfhosted/main.go).
