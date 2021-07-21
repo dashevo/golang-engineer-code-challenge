@@ -43,9 +43,8 @@ Your solution must implement at least one of the following types of external ser
      located on your server, so you can trust it.
      Code for this service should be placed [here](internal/selfhosted) and the entrypoint of the service is [here](cmd/selfhosted/main.go).
 
-For communication with your external service(s) we provide a [service](internal/app/usecase/service.go)
-which are used http client for communication between services.
-The middleware helps us calculate inbound and outbound traffic.
+For communication with your external service(s) we provide [two HTTP Client instances](https://github.com/dashevo/go-engineer-code-challenge/blob/main/internal/app/usecase/service.go#L10-L11).
+They use middleware to calculate inbound and outbound traffic.
 
 ## Your mission
 
