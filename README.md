@@ -66,6 +66,7 @@ They use middleware to calculate inbound and outbound traffic.
 ### External services
 
 - Services should be written in Go.
+- Services should be dockerized and started with [docker compose](docker-compose.yml) in the root directory.
 - Data should be permanently persisted (i.e. available after a service restart).
 
 ### Application
@@ -73,7 +74,8 @@ They use middleware to calculate inbound and outbound traffic.
 - You should validate sample data in the store method. Return an error if any data is invalid.
 - You should check data integrity in the fetch method to avoid spoofing. Keep in mind that the fetch method will not have access to the original input data provided to the store method.
 - Make sure the data returned by the fetch method matches the input data from the store action.
-- In order to specify which type of network you are going to use, follow the instruction in the [.env.dist](.env.dist) file.
+- You should use `p2pClient` for sending / retrieving data from a P2P service.
+- You should use `selfHostedClient` for sending / retrieving data from a hosted service.
 - You cannot store any data on the application side.
 
 ### Sample data validation rules
