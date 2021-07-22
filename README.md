@@ -30,13 +30,13 @@
 The goal of this challenge is to create a backend application which receives,
 validates and displays data from users.
 
-This repository is designed as a mono-repository for your application and external services. We've prepared an application skeleton for you and assume that your solution will be a light client. In the provided skeleton, please implement [application logic](internal/app/usecase/service.go) which validates and persists [sample user data](assets/data.json) in external service(s) which your application should connect to. Your application should also be able to retrieve this data back and verify its integrity.
+This repository is designed as a mono-repository for your application and external services. We've prepared an application skeleton for you and assume that your solution will be a light client. In the provided skeleton, please implement [application logic](internal/app/usecase/service.go) which validates and persists [sample user data](assets/data.json) in external service(s), to which your application should connect. Your application should also be able to retrieve this data back and verify its integrity.
 
 Your solution must implement at least one of the following types of external services:
 
-  1. **Peer-to-peer service**: This service runs on remote user machines.
+  1. **Peer-to-peer service**: This service runs on remote untrusted hosts.
      Networking and storage will be cheap for you - **0.0001 DASH per byte** - but you can’t trust
-     this service because a malicious user may spoof (modify) your data.
+     this service because a malicious operator may spoof (modify) your data, or a man-in-the-middle attack may occur.
      Code for this service should be placed [here](internal/p2p) and the entrypoint of the service is [here](cmd/p2p/main.go).
   2. **Self-hosted service**: This service runs on your server.
      Networking and storage will be much more expensive for you - **0.001 DASH per byte** - but the data is
