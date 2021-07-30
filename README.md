@@ -30,7 +30,7 @@
 The goal of this challenge is to create a backend application which receives,
 validates and displays data from users.
 
-This repository is designed as a mono-repository for your application and external services. We've prepared an application skeleton for you and assume that your solution will be a light client. In the provided skeleton, please implement [application logic](internal/app/usecase/service.go) which validates and persists [sample user data](assets/data.json) in external service(s), to which your application should connect. Your application should also be able to retrieve this data back and verify its integrity.
+This repository is designed as a mono-repository for your application and external services. We've prepared an application skeleton for you and assume that your solution will be a light client and runs on remote untrusted hosts. In the provided skeleton, please implement [application logic](internal/app/usecase/service.go) which validates and persists [sample user data](assets/data.json) in external service(s), to which your application should connect. Your application should also be able to retrieve this data back and verify its integrity.
 
 Your solution must implement at least one of the following types of external services:
 
@@ -76,7 +76,7 @@ They use middleware to calculate inbound and outbound traffic.
 - Make sure the data returned by the fetch method matches the input data from the store action.
 - You should use `p2pClient` for sending / retrieving data from a P2P service.
 - You should use `selfHostedClient` for sending / retrieving data from a hosted service.
-- You cannot store any data on the application side.
+- You cannot store any data on the application side, including cryptographic keys.
 
 ### Sample data validation rules
 
@@ -87,7 +87,7 @@ Each type of object has its own validation rules as defined below:
 
 - `id`
   - Format: `a-zA-Z0-9`
-  - Length: `256`
+  - Length: `64`
   - Required
 - `type`
   - Value: `user`
@@ -107,18 +107,18 @@ Each type of object has its own validation rules as defined below:
 
 - `id`
   - Format: `a-zA-Z0-9`
-  - Length: `256`
+  - Length: `64`
   - Required
 - `type`
   - Value: `payment`
   - Required
 - `fromUserId`
   - Format: `a-zA-Z0-9`
-  - Length: `256`
+  - Length: `64`
   - Required
 - `toMerchantId` or `toUserId`
   - Format: `a-zA-Z0-9`
-  - Length: `256`
+  - Length: `64`
   - Required
 - `amount`
   - Format: float number
@@ -132,13 +132,13 @@ Each type of object has its own validation rules as defined below:
 
 - `id`
   - Format: `a-zA-Z0-9`
-  - Length: `256`
+  - Length: `64`
   - Required
 - `type`
   - Value: `merchant`
   - Required
 - `name`
-  - Format: `a-zA-Z0-9`
+  - Format: `a-zA-Z0-9_.`
   - Max length: `20`
   - Required
 
